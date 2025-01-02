@@ -30,6 +30,7 @@ const MenuSidebar = () => {
                   <ul
                     class="category-list custom-padding custom-height scroll-bar"
                     id="myDIV"
+                    style={{ listStyle: "none" }}
                   >
                     <li class="btnn">
                       <a href="#1">

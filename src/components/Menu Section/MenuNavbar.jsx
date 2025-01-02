@@ -1,61 +1,13 @@
 import React from "react";
 import MenuSidebar from "./MenuSidebar";
-import OpenTiming from "./OpenTiming";
-// import "../../src/stylehighway.css";
 // import { img1 } from "../../../public/assets/img/product/deal_card_1.jpg";
 
 const MenuNavbar = () => {
   return (
     <>
-      {/* <!-- banner section end --> */}
-      <section class="pt-0">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="restaurant-box">
-              <div class="restaurant-details">
-                <div class="d-flex justify-content-between flex-wrap gap-3">
-                  <div>
-                    <h2 class="restaurant-name">
-                      Fiesta Mexico - High Wycombe
-                    </h2>
-                    <p class="restaurant-place mt-2">
-                      17 High Street, High Wycombe, HP11 2BE
-                    </p>
-                    <h6 class="food-items">
-                      <span>Italian</span>
-                      <i class="fa fa-circle ml-2 me-2" aria-hidden="true"></i>
-                      <span>Dips</span>
-                      <i class="fa fa-circle ml-2 me-2" aria-hidden="true"></i>
-                      <span>Deserts</span>
-                    </h6>
-                    <ul class="details-list">
-                      <li>
-                        <i class="ri-map-pin-fill theme-color"></i> 2.5 km
-                      </li>
-                      <li>
-                        <i class="ri-time-line"></i> 25-30 min
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="restaurant-description">
-                    <div class="distance d-flex">
-                      <h4 class="rating-star">
-                        <span>
-                          <i class="ri-star-s-fill text-warning"></i>
-                        </span>{" "}
-                        5.0 (1k+ Reviews)
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* <!-- tab section starts --> */}
-      <section class="tab-details-section section-b-space">
-        <div class="container">
+      <section class="tab-details-section section-b-space mt-4">
+        <div class="m-3">
           <div class="blog-boxs">
             <div class="row justify-content-center g-4">
               <MenuSidebar />
@@ -1803,7 +1755,6 @@ const MenuNavbar = () => {
                   </div>
                 </div>
               </div>
-              <OpenTiming />
             </div>
           </div>
         </div>
