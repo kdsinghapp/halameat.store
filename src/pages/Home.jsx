@@ -6,10 +6,9 @@ import Testimonials from "../components/Testimonials";
 import MainPage from "../components/Home/MainPage";
 import BestSellers from "../components/Home/BestSellers";
 
-const Home = () => {
+const Home = ({ restaurants }) => {
   return (
     <section>
-      <Navbar />
       {/* <div className="preloader">
       <button className="th-btn preloaderCls">Cancel Preloader</button>
       <div className="preloader-inner">
@@ -67,33 +66,32 @@ const Home = () => {
             <div className="col-xl-6 col-md-8">
               <div className="title-area text-center">
                 <h2 className="sec-title text-white">
-                  Welcome to <br /> Us
+                  Welcome to <br /> {restaurants?.name}
                 </h2>
               </div>
             </div>
 
             <div className="col-xl-12 text-center">
               <p className="text-white">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                We are thrilled to have you with us and are committed to
+                offering you an unforgettable dining experience. Our restaurant
+                is more than just a place to eat—it’s a celebration of flavor,
+                hospitality, and connection. With a menu crafted from the finest
+                ingredients and a commitment to excellence, each dish is
+                designed to satisfy your taste buds and create lasting memories.
+                Whether you're here for a special occasion or just a casual
+                meal, we invite you to relax and enjoy the atmosphere we’ve
+                carefully created just for you.
               </p>
               <p className="text-white">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-                sit amet, consectetur, adipisci velit, sed quia non numquam eius
-                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem. Ut enim ad minima veniam, quis nostrum
-                exercitationem
+                Our dedicated team is here to ensure that your time with us is
+                as enjoyable as possible. From the first bite to the last, we’re
+                here to take care of every detail so you can focus on what
+                matters most—savoring great food and good company. Thank you for
+                choosing{" "}
+                <span style={{color:"black",fontWeight:"800"}}>{restaurants?.name}</span>. We
+                look forward to making your experience with us truly
+                exceptional!
               </p>
             </div>
           </div>
@@ -258,7 +256,7 @@ const Home = () => {
       <Testimonials />
       <MobilePage />
 
-      <Footer />
+      <Footer restaurants={restaurants} />
       <div className="scroll-top">
         <svg
           className="progress-circle svg-content"

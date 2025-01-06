@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 const Aboutus = () => {
   return (
     <section>
-      <Navbar />
       <section className="mt-5">
         <div className="container">
           <div className="text-center">

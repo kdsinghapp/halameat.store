@@ -6509,17 +6509,22 @@ ol.wp-block-rss {
 
 @media (min-width: 1300px) {
 	.breadcumb-title {
-		font-size: 52px
+		font-size: 40px
 	}
 }
 
 .breadcumb-wrapper {
 	background-color: var(--smoke-color2);
-	padding: 170px 0 170px 0;
+	padding: 50px 0 50px 0;
 	overflow: hidden;
 	text-align: center;
-	margin-top: -10px
-}
+	margin-top: -10px;
+	background-image: url("https://img.freepik.com/premium-photo/traditional-oktoberfest-smoked-pork-knuckle-eisbein-sauce-baked-spices-potato-german-fest-food_164638-17813.jpg?ga=GA1.1.518675604.1735293407&semt=ais_hybrid");
+	/* background-size: contain; */
+	background-position: center;
+	background-repeat: no-repeat;
+  }
+  
 
 @media (max-width: 1199px) {
 	.breadcumb-wrapper {
@@ -8123,12 +8128,10 @@ ul.comment-list:has(>.th-comment-item ~ .th-comment-item):first-child>.th-post-c
 }
 
 .hero-3 .slider-pagination {
-	/* position: absolute; */
+	position: absolute;
 	bottom: 40px;
 	left: 40px;
-	width: auto;
-	color: rgb(0, 119, 255);
-	border: 1px solid black;
+	width: auto
 }
 
 .hero-style3 {
@@ -15561,358 +15564,100 @@ ul.listing-hour-day {
 	background: #ffdaad;
 }
 
-.accordion-item {
-	margin-top: calc(10px + 10 * (100vw - 320px) / 1600);
-	border-top: 1px solid rgba(var(--dashed-line), 1);
-	border-radius: 6px;
-	border: 1px solid rgba(var(--dashed-line), 1);
-	background-color: transparent;
-	overflow: hidden;
-}
+/****** CSS for Menu Page ****/
 
-.accordion-item .accordion-collapse .btnn {
-	padding: calc(5px + 10 * (100vw - 320px) / 1600) calc(10px + 10 * (100vw - 320px) / 1600);
-	line-height: 1;
-	color: rgba(var(--dark-text), 1);
-	background-color: rgba(var(--box-bg), 1);
-	border-bottom: 1px solid rgba(var(--dashed-line), 1);
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	font-weight: 500;
-	border-radius: 6px 6px 0 0;
-}
 
-.accordion-item .accordion-collapse .btnn:focus-visible {
-	outline: none;
-}
-
-.accordion-item .accordion-collapse .btnn::after {
-	-webkit-filter: brightness(1) invert(0);
-	filter: brightness(1) invert(0);
-}
-
-.accordion-item .accordion-collapse .btnn.category-list-box {
-	background-color: rgba(var(--white), 1);
-	border-bottom: none;
-	border-radius: 6px;
-}
-
-.accordion-item .accordion-header .accordion-button:not(.collapsed)::after {
-	-webkit-filter: brightness(0) invert(0);
-	filter: brightness(0) invert(0);
-}
-
-.accordion-item .accordion-collapse:focus-visible,
-.accordion-item .accordion-body:focus-visible,
-.accordion-item form:focus-visible {
-	outline: none;
-}
-
-.accordion-item .accordion-body {
-	padding: calc(10px + 10 * (100vw - 320px) / 1600);
-	background-color: rgba(var(--white), 1);
-}
-
-.accordion-item .accordion-body form .form-label {
-	color: rgba(var(--content-color), 1);
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	font-weight: 500;
-}
-
-.accordion-item .accordion-body form .form-control {
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	font-weight: 400;
-	background-color: rgba(var(--box-bg), 1);
-	border: 1px solid rgba(var(--dashed-line), 1);
-	padding: 10px 10px;
-}
-
-.accordion-item .accordion-body form .form-control:focus {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.accordion-item .accordion-body form .form-control::-webkit-input-placeholder {
-	color: rgb(136, 136, 136);
-}
-
-.accordion-item .accordion-body form .form-control::-moz-placeholder {
-	color: rgb(136, 136, 136);
-}
-
-.accordion-item .accordion-body form .form-control:-ms-input-placeholder {
-	color: rgb(136, 136, 136);
-}
-
-.accordion-item .accordion-body form .form-control::-ms-input-placeholder {
-	color: rgb(136, 136, 136);
-}
-
-.accordion-item .accordion-body form .form-control::placeholder {
-	color: rgb(136, 136, 136);
-}
-
-.accordion-item .accordion-body form .buttons {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: end;
-	-ms-flex-pack: end;
-	justify-content: flex-end;
-	gap: 20px;
-	padding: calc(10px + 10 * (100vw - 320px) / 1600) 10px;
+.sidebar {
 	width: 100%;
-	border-top: 1px dashed rgba(var(--dashed-line), 1);
-	margin-top: 24px;
+	background-color: #fff;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	min-height: 200px;
 }
 
-.accordion-item .accordion-body .card-list li {
-	display: -webkit-box;
-	display: -ms-flexbox;
+.sidebar h2 {
+	margin: 0 0 20px;
+	font-size: 20px;
+	color: #333;
+	text-align: center;
+}
+
+.menuu .th-btn.btn-sm {
+	font-size: 14px !important;
+}
+
+.search-bar {
 	display: flex;
-	width: 100%;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	border-radius: 4px;
-	background-color: rgba(var(--box-bg), 1);
-	padding: calc(8px + 7 * (100vw - 320px) / 1600) calc(10px + 10 * (100vw - 320px) / 1600);
-	margin-top: calc(10px + 10 * (100vw - 320px) / 1600);
+	margin-bottom: 20px;
 }
 
-.accordion-item .accordion-body .card-list li:first-child {
-	margin-top: 0;
+.search-bar input {
+	flex: 1;
+	padding: 8px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px 0 0 4px;
+	font-size: 16px;
+	height: 45px;
 }
 
-.accordion-item .accordion-body .card-list li .form-check-reverse {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	width: 100%;
-	text-align: left;
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-label {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	gap: calc(10px + 10 * (100vw - 320px) / 1600);
-	width: 100%;
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-label .img {
-	width: calc(20px + 10 * (100vw - 320px) / 1600);
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-label .card-name {
-	font-weight: 400;
-	font-size: calc(15px + 1 * (100vw - 320px) / 1600);
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-label .card-name span {
-	font-weight: 500;
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-input {
-	width: calc(18px + 7 * (100vw - 320px) / 1600);
-	height: calc(18px + 7 * (100vw - 320px) / 1600);
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-input:focus {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border-color: rgba(var(--dashed-line), 1);
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-input:checked {
-	background-color: rgba(var(--white), 1);
-	border-color: rgba(var(--dashed-line), 1);
-	background-image: none;
-	width: calc(18px + 7 * (100vw - 320px) / 1600);
-	height: calc(18px + 7 * (100vw - 320px) / 1600);
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-}
-
-.accordion-item .accordion-body .card-list li .form-check-reverse .form-check-input:checked::after {
-	content: "\eb7c";
-	font-family: remixicon !important;
-	font-style: normal;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
-	font-size: calc(10px + 5 * (100vw - 320px) / 1600);
-	color: rgba(var(--theme-color), 1);
-	margin-top: 1px;
-}
-
-.help-accordion .accordion-item {
-	border: 1px solid rgba(var(--dashed-line), 1);
+.search-bar button {
+	padding: 8px 10px;
+	background-color: #ce1415;
+	color: #fff;
 	border: none;
-	background: transparent;
-	margin-top: 10px;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
 }
 
-.help-accordion .accordion-item:first-child {
-	margin-top: 0;
+.search-bar button:hover {
+	background-color: #ce1415;
 }
 
-.help-accordion .accordion-item .accordion-header {
-	border-radius: 0;
+.filter-group {
+	margin-bottom: 20px;
 }
 
-.help-accordion .accordion-item .accordion-header .accordion-button {
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	border: 1px solid rgba(var(--dashed-line), 1);
-	font-weight: 500;
-	color: rgba(var(--dark-text), 1);
-	background-color: rgba(var(--box-bg), 1);
-	border-radius: 0;
-	padding: calc(10px + 10 * (100vw - 320px) / 1600);
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border-radius: 6px 6px 0 0;
-	background-color: rgba(var(--white), 1);
+.filter-group h3 {
+	font-size: 18px;
+	color: #444;
+	margin-bottom: 10px;
 }
 
-.help-accordion .accordion-item .accordion-header .accordion-button.collapsed {
-	border-radius: 6px;
+.filter-group label {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	font-size: 16px;
+	color: #555;
+	cursor: pointer;
 }
 
-.help-accordion .accordion-item .accordion-header .accordion-button::after {
-	margin-left: auto;
-	margin-right: 0;
-}
-
-[dir=rtl] .help-accordion .accordion-item .accordion-header .accordion-button::after {
-	margin-left: 0;
-	margin-right: auto;
-}
-
-.help-accordion .accordion-item .accordion-header .accordion-button:focus {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.help-accordion .accordion-item .accordion-header .accordion-button:not(.collapsed)::after {
-	-webkit-filter: grayscale(1);
-	filter: grayscale(1);
-}
-
-.help-accordion .accordion-item .accordion-header .accordion-button:not(.collapsed):focus {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.help-accordion .accordion-item .accordion-body {
-	text-align: justify;
-	font-size: calc(14px + 2 * (100vw - 320px) / 1600);
-	line-height: 1.5;
-	padding: calc(10px + 10 * (100vw - 320px) / 1600);
-	color: rgba(var(--content-color), 1);
-	border: 1px solid rgba(var(--dashed-line), 1);
-	border-top: none;
-	border-radius: 0 0 6px 6px;
-	background-color: rgba(var(--white), 1);
-}
-
-.help-accordion .accordion-item .accordion-body ul {
-	-webkit-padding-start: 10px;
-	padding-inline-start: 10px;
-}
-
-.help-accordion .accordion-item .accordion-body ul li {
-	display: list-item;
-	list-style-type: decimal;
-	padding-bottom: 10px;
-	margin-left: 10px;
-	text-align: justify;
-	font-size: calc(14px + 2 * (100vw - 320px) / 1600);
-	line-height: 1.5;
-	color: rgba(var(--content-color), 1);
-}
-
-[dir=rtl] .help-accordion .accordion-item .accordion-body ul li {
-	margin-left: 0;
+.filter-group input {
 	margin-right: 10px;
 }
 
-.sidebar-accordion {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	gap: 25px;
+.sidebar input[type="checkbox"] {
+	visibility: visible !important;
+	opacity: 1 !important;
+	width: 12px !important;
+	height: 12px !important;
+	display: block !important;
 }
 
-.sidebar-accordion .accordion-item {
+.apply-filters {
 	width: 100%;
-	background: transparent;
+	padding: 10px;
+	background-color: #ce1415;
+	color: #fff;
 	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
 }
 
-.sidebar-accordion .accordion-item .accordion-header .accordion-button {
-	padding: calc(10px + 5 * (100vw - 320px) / 1600);
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	font-weight: 600;
-	background-color: rgba(var(--box-bg), 1);
-	border-radius: 6px;
-	color: rgba(var(--dark-text), 1);
-	-webkit-box-shadow: none;
-	box-shadow: none;
+.apply-filters:hover {
+	background-color: #ce1415;
 }
 
-.sidebar-accordion .accordion-item .accordion-header .accordion-button::after {
-	-webkit-filter: invert(1) grayscale(1) brightness(0);
-	filter: invert(1) grayscale(1) brightness(0);
-}
-
-.sidebar-accordion .accordion-item .accordion-header.collapsed {
-	font-size: calc(14px + 4 * (100vw - 320px) / 1600);
-	font-weight: 600;
-	background-color: rgba(var(--box-bg), 1);
-	border-radius: 6px;
-	border-bottom: 1px solid rgba(var(--dashed-line), 1);
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.sidebar-accordion .accordion-item .accordion-header::after {
-	-webkit-filter: invert(1) grayscale(1) brightness(0);
-	filter: invert(1) grayscale(1) brightness(0);
-}
-
-.sidebar-accordion .accordion-item .accordion-body {
-	padding: 15px 0 0;
-	background-color: rgba(var(--white), 1);
-}
+/**** end Css for menu ****/

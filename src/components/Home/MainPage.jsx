@@ -72,7 +72,7 @@ const MainPage = () => {
                         {slide.description}
                       </p>
                       <a
-                        href="#"
+                        href="/menu"
                         className="th-btn style4"
                         data-ani="slideinup"
                         data-ani-delay="0.6s"

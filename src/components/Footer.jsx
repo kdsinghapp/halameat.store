@@ -1,6 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [restaurants, setRestaurants] = useState(null);
+
+  const getRestaurant = async () => {
+    try {
+      const response = await axios.get(
+        "https://partnermeatwala.com/api/Vendor/GetVendorInfo?restname=Shubh Restaurant&id=1"
+      );
+
+      const { success, vendorinfo } = response.data;
+
+      if (success !== "1") {
+        throw new Error("Failed to fetch data");
+      }
+
+      console.log("Restaurant info:", vendorinfo);
+      setRestaurants(vendorinfo);
+    } catch (error) {
+      console.error("Error fetching restaurant info:", error.message || error);
+    }
+  };
+
+  useEffect(() => {
+    getRestaurant();
+  }, []);
+
+  console.log("Restaurants:", restaurants);
   return (
     <footer className="footer-wrapper footer-layout3">
       <div className="widget-area">
@@ -11,24 +38,20 @@ const Footer = () => {
                 <h3 className="widget_title text-white">Address</h3>
                 <div className="th-widget-contact">
                   <div className="info-box">
-                    <p className="info-box_text">
-                      2 Whitelands Rd, <br />
-                      High Wycombe
-                      <br /> HP12 3EQ
-                    </p>
+                    <p className="info-box_text">{restaurants?.address}</p>
                   </div>
                   <div className="info-box">
                     <p className="info-box_text">
                       CALL:{" "}
                       <a href="tel:+16326543564" className="info-box_link">
                         {" "}
-                        0123456789
+                        {restaurants?.contact}
                       </a>{" "}
                     </p>
                   </div>
                   <p>
                     {" "}
-                    <a href="#" className="th-btn btn-sm style4">
+                    <a href="/menu" className="th-btn btn-sm style4">
                       Order Now<i className="fas fa-chevrons-right ms-2"></i>
                     </a>{" "}
                   </p>
@@ -70,34 +93,18 @@ const Footer = () => {
                 <h3 className="widget_title text-white">Opening Hours</h3>
                 <div className="menu-all-pages-container">
                   <ul className="menu listing-hour-day">
-                    <li>
-                      <span className="listing-hour-day">Monday</span>
-                      <span className="listing-hour-time">10:00 - 6:00</span>
-                    </li>
-                    <li>
-                      <span className="listing-hour-day">Tuesday</span>
-                      <span className="listing-hour-time">10:00 - 6:00</span>
-                    </li>
-                    <li>
-                      <span className="listing-hour-day">Wednesday</span>
-                      <span className="listing-hour-time">10:00 - 6:00</span>
-                    </li>
-                    <li className="active">
-                      <span className="listing-hour-day">Thursday</span>
-                      <span className="listing-hour-time">10:00 - 4:00</span>
-                    </li>
-                    <li>
-                      <span className="listing-hour-day">Friday</span>
-                      <span className="listing-hour-time">10:00 - 6:00</span>
-                    </li>
-                    <li>
-                      <span className="listing-hour-day">Saturday</span>
-                      <span className="listing-hour-time">Closed</span>
-                    </li>
-                    <li>
-                      <span className="listing-hour-day">Sunday</span>
-                      <span className="listing-hour-time">10:00 - 6:00</span>
-                    </li>
+                    {restaurants?.vendorOpeningHours?.map(
+                      (openingHour, index) => (
+                        <li key={index}>
+                          <span className="listing-hour-day">
+                            {openingHour?.day}
+                          </span>
+                          <span className="listing-hour-time">
+                            {openingHour?.opentime} - {openingHour?.closetime}
+                          </span>
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               </div>

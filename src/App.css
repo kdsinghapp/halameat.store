@@ -158,10 +158,10 @@ a {
     width: 250px;
     position: relative;
     box-shadow: 0 2px 7px #a38888;
-    margin: 20px auto;
+    margin: 5px;
     background: rgb(231, 5, 5);
-    /* border: 1px solid #ce1415; */
 }
+
 
 .badge {
     position: absolute;
@@ -258,24 +258,38 @@ a {
     font-size: 17px;
 }
 
-.sidebar-content{
-    border-right: 1px solid grey;
+.sidebar-content {
+    border-right: 1px solid rgb(169, 169, 169);
     padding: 0px 10px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: flex-start;
     width: 20%;
+    /* position: absolute; */
 }
 
-.list-styled{
+.list-styled {
     height: 80vh;
     list-style: none;
 }
 
-.list-styled li{
-    margin: 10px 0px;
-    border-bottom: 1px solid ;
+.list-styled li {
+    margin: 10px 10px 0px 0px;
     font-size: 17px;
     font-weight: 600;
+    padding: 4px 50px;
+    background-color: lightgrey;
+}
+
+.list-styled li:hover {
+    background-color: black;
+    color: red;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    /* Ensures it takes the full height of the viewport */
 }
