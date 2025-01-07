@@ -1,8 +1,60 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import 'swiper/swiper-bundle.min.css';
 
-const Testimonials = () => {
+const Testimonials = ({ restaurants }) => {
+  const sliderRef = useRef(null);
+  const [reviews, setReviews] = useState([]);
+
+  const getReviews = async () => {
+    try {
+      const res = await axios.get(
+        `https://partnermeatwala.com/api/Vendor/getgooglereviews?restid=1`
+      );
+      console.log("Reviews: ", res?.data?.result?.reviews);
+      setReviews(res?.data?.result?.reviews);
+    } catch (error) {}
+  };
+
+  const truncateText = (text, wordLimit) => {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "…";
+    }
+    return text;
+  };
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
+  useEffect(() => {
+    const sliderElement = sliderRef.current;
+
+    if (sliderElement) {
+      const sliderOptions = sliderElement.getAttribute("data-slider-options");
+
+      try {
+        const options = JSON.parse(sliderOptions);
+
+        new Swiper(sliderElement, {
+          ...options,
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: ".slider-next",
+            prevEl: ".slider-prev",
+          },
+        });
+      } catch (error) {
+        console.error("Error parsing slider options:", error);
+      }
+    }
+  }, []);
+
   return (
     <>
       <section>
@@ -15,7 +67,7 @@ const Testimonials = () => {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-smoke2 space" id="testi-sec">
+      <section className="" id="testi-sec">
         <div className="container">
           <div className="slider-area">
             <Swiper
@@ -33,219 +85,41 @@ const Testimonials = () => {
               }}
               className="productSlider1"
             >
-              {/* Testimonial Slides */}
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_1.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
+              {reviews.map((review, index) => (
+                <SwiperSlide key={index}>
+                  <div className="th-product product-grid text-left">
+                    <div className="d-flex">
+                      <div className="me-2">
+                        <img
+                          src={review.profile_photo_url}
+                          alt="Product Image"
+                          className="teimg"
+                        />
+                      </div>
+                      <div className="product-content">
+                        <h6 className="mb-0">
+                          <a href="#">{review.author_name}</a>
+                        </h6>
+                        <p>{review.relative_time_description}</p>
+                      </div>
                     </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">John Doe</a>
-                      </h6>
-                      <p>2 months ago</p>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              {/* Additional SwiperSlide elements can go here */}
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_2.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
-                    </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">Roniab Bosry</a>
-                      </h6>
-                      <p>2 months ago</p>
+                    <div className="text-left">
+                      <p className="mb-0">
+                        {[...Array(5)].map((_, index) => (
+                          <i
+                            key={index}
+                            className={`fa ${
+                              index < review.rating ? "fa-star" : ""
+                            }`}
+                            style={{ color: "orange" }}
+                          ></i>
+                        ))}
+                      </p>
+                      <p>{truncateText(review.text, 30)}</p>
                     </div>
                   </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_2.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
-                    </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">Roniab Bosry</a>
-                      </h6>
-                      <p>2 months ago</p>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_2.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
-                    </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">Roniab Bosry</a>
-                      </h6>
-                      <p>2 months ago</p>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_2.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
-                    </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">Roniab Bosry</a>
-                      </h6>
-                      <p>2 months ago</p>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="th-product product-grid text-left">
-                  <div className="d-flex">
-                    <div className="me-2">
-                      <img
-                        src="assets/img/testimonial/testi_3_2.jpg"
-                        alt="Product Image"
-                        className="teimg"
-                      />
-                    </div>
-                    <div className="product-content">
-                      <h6 className="mb-0">
-                        <a href="#">Roniab Bosry</a>
-                      </h6>
-                      <p>2 months ago</p>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    {/* Star Rating */}
-                    <p className="mb-0">
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                      <i className="fa fa-star-o" style={{ color: "orange" }}></i>
-                    </p>
-                    <p>
-                      Some studies suggest that meat foods may have higher
-                      levels of certain nutrients and antioxidants compared to
-                      conventionally grown foods. However, this can vary depending
-                      on factors like soil quality and growing conditions.
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              {/* Repeat for more testimonials */}
+                </SwiperSlide>
+              ))}
             </Swiper>
 
             {/* Navigation buttons */}

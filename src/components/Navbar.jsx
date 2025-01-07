@@ -11,7 +11,12 @@ const Navbar = () => {
               <div className="col-auto">
                 <div className="header-logo">
                   <a href="/">
-                    <h2>LOGO</h2>
+                    <img
+                      style={{ width: "180px" }}
+                      src="https://api.asm.skype.com/v1/objects/0-weu-d16-792f3ec7fb37932e7970a6a5ab594602/views/imgpsh_fullsize_anim"
+                      alt=""
+                    />
+                    {/* <h2>LOGO</h2> */}
                   </a>
                 </div>
               </div>

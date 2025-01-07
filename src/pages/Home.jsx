@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Testimonials from "../components/Testimonials";
 import MainPage from "../components/Home/MainPage";
 import BestSellers from "../components/Home/BestSellers";
+import { Link } from "react-router-dom";
 
 const Home = ({ restaurants }) => {
   return (
@@ -89,8 +90,10 @@ const Home = ({ restaurants }) => {
                 here to take care of every detail so you can focus on what
                 matters most—savoring great food and good company. Thank you for
                 choosing{" "}
-                <span style={{color:"black",fontWeight:"800"}}>{restaurants?.name}</span>. We
-                look forward to making your experience with us truly
+                <span style={{ color: "black", fontWeight: "800" }}>
+                  {restaurants?.name}
+                </span>
+                . We look forward to making your experience with us truly
                 exceptional!
               </p>
             </div>
@@ -214,9 +217,9 @@ const Home = ({ restaurants }) => {
                   <h3 className="box-title">
                     <a href="#">Chicken</a>
                   </h3>
-                  <a href="#" className="th-btn btn-sm style4">
+                  <Link to="/menu" className="th-btn btn-sm style4">
                     Explore<i className="fas fa-chevrons-right ms-2"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -229,9 +232,9 @@ const Home = ({ restaurants }) => {
                   <h3 className="box-title">
                     <a href="#">Beef</a>
                   </h3>
-                  <a href="#" className="th-btn btn-sm style4">
+                  <Link to="/menu" className="th-btn btn-sm style4">
                     Explore<i className="fas fa-chevrons-right ms-2"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -244,19 +247,17 @@ const Home = ({ restaurants }) => {
                   <h3 className="box-title">
                     <a href="#">Lamb</a>
                   </h3>
-                  <a href="#" className="th-btn btn-sm style4">
+                  <Link to="/menu" className="th-btn btn-sm style4">
                     Explore<i className="fas fa-chevrons-right ms-2"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <Testimonials />
+      <Testimonials restaurants={restaurants} />
       <MobilePage />
-
-      <Footer restaurants={restaurants} />
       <div className="scroll-top">
         <svg
           className="progress-circle svg-content"

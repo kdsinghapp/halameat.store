@@ -16,7 +16,7 @@ const Footer = () => {
         throw new Error("Failed to fetch data");
       }
 
-      console.log("Restaurant info:", vendorinfo);
+      // console.log("Restaurant info:", vendorinfo);
       setRestaurants(vendorinfo);
     } catch (error) {
       console.error("Error fetching restaurant info:", error.message || error);
@@ -27,7 +27,7 @@ const Footer = () => {
     getRestaurant();
   }, []);
 
-  console.log("Restaurants:", restaurants);
+  // console.log("Restaurants:", restaurants);
   return (
     <footer className="footer-wrapper footer-layout3">
       <div className="widget-area">

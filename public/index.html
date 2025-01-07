@@ -55,5 +55,26 @@
     <script src="./assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/app.min.js"></script>
     <script src="./assets/js/main.js"></script>
+    
+   <script type="text/javascript">
+    $('document').ready(function(){
+    $('#left-side-bar-category li').click(function(){
+        $('#left-side-bar-category li').removeClass('side-cat-selected');
+        $(this).addClass('side-cat-selected');
+    
+    });  
+    });
+    function scrollcatLeft() {
+      const myDiv = document.getElementById('left-side-bar-category');
+      myDiv.scrollBy(-100, 0); // Adjust the scroll amount as needed
+    }
+     
+    function scrollcatRight() {
+      const myDiv = document.getElementById('left-side-bar-category');
+      myDiv.scrollBy(100, 0); // Adjust the scroll amount as needed
+    }
+    
+     
+    </script>
   </body>
 </html>

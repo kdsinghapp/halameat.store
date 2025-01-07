@@ -7,6 +7,7 @@ import OrderOnline from "./pages/OrderOnline";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [restaurants, setRestaurants] = useState(null);
@@ -23,7 +24,7 @@ function App() {
         throw new Error("Failed to fetch data");
       }
 
-      console.log("Restaurant info:", vendorinfo);
+      // console.log("Restaurant info:", vendorinfo);
       setRestaurants(vendorinfo);
     } catch (error) {
       console.error("Error fetching restaurant info:", error.message || error);
@@ -34,21 +35,22 @@ function App() {
     getRestaurant();
   }, []);
 
-  console.log("Restaurants:", restaurants);
+  console.log("Restaurants:", restaurants?.name);
 
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home restaurants={restaurants} />} />
         <Route path="/menu" element={<OrderOnline />} />
-        <Route path="/about-us" element={<Aboutus />} />
+        <Route path="/about-us" element={<Aboutus restaurants={restaurants}/>} />
         <Route
           path="/contact-us"
           element={<Contactus restaurants={restaurants} />}
         />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
+      <Footer restaurants={restaurants}/>
     </Router>
   );
 }

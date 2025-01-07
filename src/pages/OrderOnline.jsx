@@ -7,47 +7,30 @@ import { Link } from "react-router-dom";
 
 const OrderOnline = () => {
   const [data, setData] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
 
   const getData = async () => {
     try {
       const res = await axios.get(
         `https://partnermeatwala.com/api/Vendor/GetVandoreDetails?id=1`
       );
-      setData(res.data);
+      setData(res.data.restaurantmenulist);
     } catch (error) {
       console.error("Error fetching restaurant info:", error.message || error);
     }
-  };
-
-  const stripHtmlTags = (str) => {
-    const div = document.createElement("div");
-    div.innerHTML = str;
-    return div.textContent || div.innerText || "";
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedItems = data?.restaurantmenulist[0].items.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
-
-  const totalPages = Math.ceil(
-    (data?.restaurantmenulist[0]?.items.length || 0) / itemsPerPage
-  );
+  console.log("Restaurants", data);
 
   return (
     <>
-      <div className="breadcumb-wrapper" data-bg-src="">
+      <div
+        className="breadcumb-wrapper"
+        data-bg-src="assets/img/hero/hero_bg_3_2.jpg"
+      >
         <div className="container">
           <div className="breadcumb-content">
             <h2 className="breadcumb-title text-white">Menu</h2>
@@ -62,100 +45,83 @@ const OrderOnline = () => {
           </div>
         </div>
       </div>
-      <section className="mt-5 space-extra-bottom">
+      <section className="mt-5">
         <div className="container">
           <div className="row">
-            <Sidebar data={data?.restaurantmenulist} />
-            <div className="col-lg-9">
-              <div className="th-sort-bar">
-                <div className="row justify-content-between align-items-center">
-                  <div className="col-md">
-                    <p className="woocommerce-result-count">Menu</p>
-                  </div>
-                  <div className="col-md-auto">
-                    <form className="woocommerce-ordering" method="get">
-                      <select
-                        name="orderby"
-                        className="orderby"
-                        aria-label="Shop order"
-                      >
-                        <option value="menu_order" selected="selected">
-                          Default Sorting
-                        </option>
-                        <option value="date">Sort by latest</option>
-                        <option value="price">
-                          Sort by price: low to high
-                        </option>
-                        <option value="price-desc">
-                          Sort by price: high to low
-                        </option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div className="row gy-40 menuu">
-                {paginatedItems?.map((item, index) => (
-                  <div className="col-xl-4 col-lg-4 col-6" key={index}>
-                    <div className="th-product product-grid">
-                      <div className="product-img">
-                        <img src={item.image} alt="Product Image" />
-                        <span className="product-tag">Hot</span>
-                      </div>
-                      <div className="product-content">
-                        <h3 className="product-title">
-                          <a href="#">{stripHtmlTags(item.description)}</a>
-                        </h3>
-                        <span className="price">${item.cost}</span>
-                        <div className="woocommerce-product-rating">
-                          <span className="count">(120)</span>
-                          <div
-                            className="star-rating"
-                            role="img"
-                            aria-label="Rated 5.00 out of 5"
-                          >
-                            <span>
-                              Rated <strong className="rating">5.00</strong> out
-                              of 5 based on <span className="rating">1</span>{" "}
-                              customer rating
-                            </span>
-                          </div>
-                        </div>
-                        <a
-                          href="#"
-                          className="th-btn btn-sm style4"
-                          style={{ color: "#fff" }}
-                        >
-                          Buy Now
-                        </a>
-                      </div>
+            <div id="column-left">
+              <div className="box">
+                <div className="box-content" style={{ position: "relative" }}>
+                  <button
+                    className="lefty paddle"
+                    id="left-button"
+                    onclick="scrollcatLeft()"
+                  >
+                    <i className="fa fa-angle-left" aria-hidden="true" />
+                  </button>
+                  <div className="box-category" id="scrollit">
+                    <div className="cater" id="caterr">
+                      <ul id="left-side-bar-category">
+                        {data?.map((item, index) => (
+                          <li className="" key={index}>
+                            <a href="#cat_1" className="active">
+                              {" "}
+                              {item.category}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                ))}
+                  <button
+                    className="righty paddle"
+                    id="right-button"
+                    onclick="scrollcatRight()"
+                  >
+                    <i className="fa fa-angle-right" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
-              <div className="th-pagination text-center pt-50">
-                <ul>
-                  {Array.from({ length: totalPages }, (_, i) => (
-                    <li key={i}>
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handlePageChange(i + 1);
-                        }}
-                        className={currentPage === i + 1 ? "active" : ""}
-                      >
-                        {i + 1}
-                      </a>
-                    </li>
+            </div>
+
+            <div className="col-lg-12 mb-5">
+              {data?.map((category, index) => (
+                <div
+                  className="row mt-0 gy-40 menuu"
+                  id={`cat_${index}`}
+                  key={index}
+                >
+                  <div className="col-xl-12 col-lg-12 col-12 text-center">
+                    <h4 style={{ fontWeight: "bold" }}>{category.category}</h4>
+                  </div>
+                  {category.items.map((item, idx) => (
+                    <div className="col-xl-3 col-lg-3 col-6" key={idx}>
+                      <div className="th-product product-grid">
+                        <div className="product-img">
+                          <img src={item.image} alt={item.foodname} />
+                          <span className="product-tag">Hot</span>
+                          {/* {item.isHot && (
+                          )} */}
+                        </div>
+                        <div className="product-content">
+                          <h3 className="product-title">{item.foodname}</h3>
+                          <span className="price">${item.cost}</span>
+                          <a
+                            href="#"
+                            className="th-btn btn-sm style4"
+                            style={{ color: "#fff" }}
+                          >
+                            Buy Now
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
-      <Footer />
       <div className="scroll-top">
         <svg
           className="progress-circle svg-content"

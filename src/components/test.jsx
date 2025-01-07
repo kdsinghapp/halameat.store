@@ -1,189 +1,119 @@
-export default function Footer() {
-    const [isVisible, setIsVisible] = useState(false);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        setIsVisible(window.scrollY > 100);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
-  
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-  
-    const ourServicesLinks = [
-      { href: "/live", text: "Live Astrologers" },
-      { href: "/chat-with-astrologer", text: "Chat With Astrologers" },
-      { href: "/talk-to-astrologer", text: "Talk to Astrologer" },
-      { href: "/free-kundli", text: "Free Kundli" },
-      { href: "/numerology", text: "Numerology" },
-      { href: "/kundali-matching", text: "Kundli Matching" },
-      { href: "/today-panchang", text: "Daily Panchang" },
-      { href: "/horoscope/todays-horoscope", text: "Daily Horoscopes" },
-      { href: "/horoscope/monthly-horoscope", text: "Monthly Horoscopes" },
-      { href: "/blog", text: "Blog" },
-    ].sort((a, b) => a.text.localeCompare(b.text));
-  
-    const links = [
-      { href: "/terms-and-conditions", text: "Terms & Conditions" },
-      { href: "/privacy-policies", text: "Privacy Policy" },
-      { href: "/refund-and-cancellation-policy", text: "Refund Policy" },
-      { href: "/astrology-customer-support", text: "Contact Us" },
-    ].sort((a, b) => a.text.localeCompare(b.text));
-  
-    const quickLinks = [
-      { href: "/read-kundli-guide", text: "How to Read Kundli" },
-      { href: "/astrology-houses-explained", text: "Astrology Houses" },
-      { href: "/zodiac-compatibility", text: "Zodiac Compatibility" },
-      { href: "/color-therapy", text: "Color Therapy" },
-      { href: "/meditation", text: "Meditation" },
-      { href: "/dasha", text: "Dasha" },
-      { href: "/blog/western-astrology/", text: "Western Astrology" },
-      { href: "/blog/yantras/", text: "Yantras" },
-      { href: "/yoga", text: "Yoga" },
-      { href: "/zodiac-signs", text: "Zodiac Sign" },
-      { href: "/shubh-muhurat-2024", text: "Shubh Muhurat" },
-      { href: "/shubh-muhurat-2025", text: "Shubh Muhurat 2025" },
-      { href: "/love-calculator", text: "Love Calculator" },
-      { href: "/chat-with-astrologer/tarot-reader", text: "Find Tarot Astrologer" },
-    ].sort((a, b) => a.text.localeCompare(b.text));
-  
-    const horoscope2025Links = [
-      { href: "/horoscope/yearly-horoscope/career-horoscope-2025", text: "Career Horoscope 2025" },
-      { href: "/horoscope/yearly-horoscope/chinese-horoscope-2025", text: "Chinese Horoscope 2025" },
-      { href: "/horoscope/yearly-horoscope/education-horoscope-2025", text: "Education Horoscope 2025" },
-      { href: "/horoscope/yearly-horoscope/health-horoscope-2025", text: "Health Horoscope 2025" },
-      { href: "/horoscope/yearly-horoscope/love-horoscope-2025", text: "Love Horoscope 2025" },
-    ].sort((a, b) => a.text.localeCompare(b.text));
-  
-    return (
-      <>
-        <section className="px_footer_wrapper">
-          <div className="container">
-            <div className="py-3">
-              <div className="header_link_color_footer_logo mt-3">
-                <Image
-                  src={footerLogo}
-                  style={{ width: "18%" }}
-                  alt="logo"
-                  className="header_logo_footer"
-                />
-              </div>
-              <div className="px_footer_widget mt-0">
-                <h3 className="px_footer_heading">About Us</h3>
-                <span className="footer_logo_description">
-                  AstroPush is an online astrology website started with an aim to
-                  help everyone push their worries out of their life through
-                  predictions from a group of certified and well-known Astrologers
-                  in their respective fields around the world.
-                </span>
-              </div>
-            </div>
-            <div className="px_footer_inner px_padderTop30 px_padderBottom50 pt-0">
-              <div className="row w-100">
-                <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-                  <div className="px_footer_widget">
-                    <h3 className="px_footer_heading">Our Services</h3>
-                    <ul>
-                      {ourServicesLinks.map((link) => (
-                        <li key={link.href}>
-                          <Link href={link.href}>{link.text}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="px_footer_widget">
-                    <h3 className="px_footer_heading">Links</h3>
-                    <ul>
-                      {links.map((link) => (
-                        <li key={link.href}>
-                          <Link href={link.href}>{link.text}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-                  <div className="px_footer_widget">
-                    <h3 className="px_footer_heading">Astrologer</h3>
-                    <ul>
-                      <li>
-                        <Link href="/astrologer-signup">Astrologer Registration</Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="px_footer_widget">
-                    <h3 className="px_footer_heading">Quick Links</h3>
-                    <ul>
-                      {quickLinks.map((link) => (
-                        <li key={link.href}>
-                          <Link href={link.href}>{link.text}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-  
-                <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div className="px_footer_widget">
-                    <h3 className="px_footer_heading">Horoscope 2025</h3>
-                    <ul>
-                      {horoscope2025Links.map((link) => (
-                        <li key={link.href}>
-                          <Link href={link.href}>{link.text}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="px_footer_widget px_footer_container">
-                    <h3 className="px_footer_heading">Contact Us</h3>
-                    <ul className="px_contact_list .f-box">
-                      <li>
-                        <Image src={map} alt="map" />
-                        <p>
-                          Dahia, 14th Floor, Mirashi Nagar, Kanjurmarg, Mumbai,
-                          India - 400042
-                        </p>
-                      </li>
-                      <li>
-                        <Image src={address} alt="address" />
-                        <p>
-                          <a
-                            style={{ padding: "0px !important" }}
-                            className={styles.mail}
-                            href="mailto:customer.support@astropush.com"
-                          >
-                            customer.support@astropush.com
-                          </a>
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div
-          id="scroll"
-          className="main_go_top "
-          onClick={scrollToTop}
-          style={{ display: isVisible ? "block" : "none" }}
-        >
-          <div className="go_top item-bounce">
-            <span>
-              <i className="fa fa-chevron-up"></i>
-            </span>
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import 'swiper/swiper-bundle.min.css';
+
+const Testimonials = () => {
+  const [reviews, setReviews] = useState([]);
+
+  const getReviews = async () => {
+    try {
+      const res = await axios.get(
+        `https://partnermeatwala.com/api/Vendor/getgooglereviews?restid=1`
+      );
+      console.log("Reviews: ", res?.data?.result?.reviews);
+      setReviews(res?.data?.result?.reviews);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
+  return (
+    <>
+      <section>
+        <div className="container">
+          <div className="title-area text-center">
+            <h2 className="sec-title">
+              Our <br /> Reviews
+            </h2>
           </div>
         </div>
-      </>
-    );
-  }
-  
+      </section>
+
+      <section className="overflow-hidden bg-smoke2 space" id="testi-sec">
+        <div className="container">
+          <div className="slider-area">
+            {reviews.map((review, index) => (
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={1}
+                breakpoints={{
+                  576: { slidesPerView: 2 },
+                  768: { slidesPerView: 2 },
+                  992: { slidesPerView: 3 },
+                  1200: { slidesPerView: 3 },
+                }}
+                navigation={{
+                  prevEl: ".slider-prev",
+                  nextEl: ".slider-next",
+                }}
+                className="productSlider1"
+                key={index}
+              >
+                <SwiperSlide>
+                  <div className="th-product product-grid text-left">
+                    <div className="d-flex">
+                      <div className="me-2">
+                        <img
+                          src="assets/img/testimonial/testi_3_1.jpg"
+                          alt="Product Image"
+                          className="teimg"
+                        />
+                      </div>
+                      <div className="product-content">
+                        <h6 className="mb-0">
+                          <a href="#">{review.author_name}</a>
+                        </h6>
+                        <p>{review.relative_time_description}</p>
+                      </div>
+                    </div>
+                    <div className="text-left">
+                      {/* Star Rating */}
+                      <p className="mb-0">
+                        <i
+                          className="fa fa-star-o"
+                          style={{ color: "orange" }}
+                        ></i>
+                        <i
+                          className="fa fa-star-o"
+                          style={{ color: "orange" }}
+                        ></i>
+                        <i
+                          className="fa fa-star-o"
+                          style={{ color: "orange" }}
+                        ></i>
+                        <i
+                          className="fa fa-star-o"
+                          style={{ color: "orange" }}
+                        ></i>
+                        <i
+                          className="fa fa-star-o"
+                          style={{ color: "orange" }}
+                        ></i>
+                      </p>
+                      <p>{review.text}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            ))}
+
+            {/* Navigation buttons */}
+            <button className="slider-arrow slider-prev">
+              <i className="far fa-arrow-left"></i>
+            </button>
+            <button className="slider-arrow slider-next">
+              <i className="far fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Testimonials;
+
+
