@@ -97,14 +97,14 @@ const OrderOnline = () => {
                     <div className="col-xl-3 col-lg-3 col-6" key={idx}>
                       <div className="th-product product-grid">
                         <div className="product-img">
-                          <img src={item.image} alt={item.foodname} />
+                          <img src={`https://partnermeatwala.com/documents/${item.image}`} alt={item.foodname} />
                           <span className="product-tag">Hot</span>
                           {/* {item.isHot && (
                           )} */}
                         </div>
                         <div className="product-content">
                           <h3 className="product-title">{item.foodname}</h3>
-                          <span className="price">${item.cost}</span>
+                          <span className="price mb-2">${item.cost}</span>
                           <a
                             href="#"
                             className="th-btn btn-sm style4"
